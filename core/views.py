@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 # from django.views.generic import 
-# from django.urls import reverse
+from django.urls import reverse
 from .models import Student
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.views.generic.list import ListView
@@ -21,7 +21,10 @@ class StudentDetailView(DetailView):
 class StudentUpdateView(UpdateView):
     model=Student
     fields=['name','roll_no']
-    success_url=""
+    success_url="/"
+
+    def get_success_url(self):
+        return reverse("core:students")
 
 class StudentDeleteView(DeleteView):
     model=Student
