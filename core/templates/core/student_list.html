@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+</head>
+<body>
+    <ul>
+        <!-- Iterate over object_list -->
+        {% for object in object_list %}
+        <!-- Display Objects -->
+        <li><a href="{% url 'core:student_detail' object.id %}">{{ object.name }} {{ object.roll_no }}</a> <a href="{% url 'core:student_update' object.id %}">update</a> <a href="{% url 'core:delete' object.id %}">Delete</a></li>
+     
+        <hr/>
+        <!-- If object_list is empty  -->
+        {% empty %}
+        <li>No objects yet.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
